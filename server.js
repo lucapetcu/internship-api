@@ -24,7 +24,10 @@ app.post('/receive-location', async (req, res) => {
     });
     try {
         await newLocation.save();
-        res.send('Received a post request');
+        res.status(200).json({
+            status: 'success',
+            coordinates: newLocation
+        });
     } catch(err) {
         console.log(err);
         res.status(500).send(err);
