@@ -22,7 +22,7 @@ exports.addUser = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find().select('user_email user_name');
         res.status(200).json({
             status: 'success',
             users
@@ -35,7 +35,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.checkUser = async (req, res) => {
     try {
-        const user = await User.find({user_token: req.params.user_token});
+        const user = await User.find({user_token: req.params.user_token}).select('user_name user_email');
         if (user.length !== 0) {
             return res.status(200).json({
                 status: 'success',

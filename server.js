@@ -12,6 +12,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/locations')
     console.log('DB connection succesful');
 });
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.use('/coordinates', coordinatesRouter);
 
 app.use('/user', userRouter);
