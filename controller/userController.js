@@ -2,16 +2,17 @@ const User = require('./../models/userModel');
 
 exports.addUser = async (req, res) => {
     const newUser = new User({
-        user_token: req.body.user_token,
-        user_email: req.body.user_email,
-        user_name: req.body.user_name
+        user_token: req.body.userToken,
+        user_email: req.body.userEmail,
+        user_name: req.body.userName
     });
 
     try {
         await newUser.save();
         res.status(201).json({
             status: 'success',
-            user: newUser
+            username: newUser.user_name,
+            user_email: newUser.user_email
         });
     } catch(err) {
         console.log(err);
