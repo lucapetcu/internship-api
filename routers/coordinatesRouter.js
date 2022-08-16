@@ -1,5 +1,5 @@
 const express = require('express');
-const coordinatesController = require('./../controller/coordinatesController');
+const coordinatesController = require('./../controllers/coordinatesController');
 
 const router = express.Router();
 
