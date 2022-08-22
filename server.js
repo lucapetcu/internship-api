@@ -4,6 +4,7 @@ const cors = require('cors');
 const coordinatesRouter = require('./routers/coordinatesRouter');
 const userRouter = require('./routers/userRouter');
 const settingsRouter = require('./routers/settingsRouter');
+// const interval = require('./utils/Utils');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/coordinates', coordinatesRouter);
 app.use('/user', userRouter);
 
 app.use('/settings', settingsRouter);
+
 
 const port = 3000;
 app.listen(port, () => {

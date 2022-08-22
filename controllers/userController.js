@@ -34,6 +34,19 @@ exports.getAllUsers = async (req, res) => {
     }
 };
 
+exports.getUsersWithout = async (req, res) => {
+    try {
+        const users = await User.find({user_token: {$ne: req.params.user_token}}).select('user_email user_name');
+        res.status(200).json({
+            status: 'success',
+            users
+        });
+    } catch(err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+};
+
 exports.checkUser = async (req, res) => {
     try {
         const user = await User.find({user_token: req.params.user_token}).select('user_name user_email');
